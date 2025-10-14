@@ -13,9 +13,39 @@ namespace ConsoleApp1
         List<string> list = new List<string>();
         HashSet<int> set = new HashSet<int>();
         LinkedList<string> linkedList = new LinkedList<string>();
+        SortedList<int, string> sl = new SortedList<int, string>();
+        Queue<int> queue = new Queue<int>();
 
-       public void Start()
-       {
+        public void Start()
+        {
+            //Queue
+            queue.Enqueue(25);
+            queue.Enqueue(21);
+            queue.Enqueue(20);
+            queue.Enqueue(24);
+            Console.WriteLine("Before: ");
+            foreach (int item in queue)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("After: ");
+            queue.Dequeue();
+            queue.Dequeue();
+            foreach (var item in queue)
+            {
+                Console.WriteLine(item);
+            }
+
+            //SortedList
+            //sl.Add(4, "Jolly");
+            //sl.Add(1, "Purvika");
+            //sl.Add(2, "Nandani");
+            //sl.Add(3, "Pranali");
+            //foreach(var s in sl)
+            //{
+            //    Console.WriteLine($"Key: {s.Key} Value: {s.Value}");
+            //}
+
             //LinkedList
             //linkedList.Clear();
             //linkedList.AddFirst("y");
