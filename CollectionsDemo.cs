@@ -21,32 +21,31 @@ namespace ConsoleApp1
 
         public void Start()
         {
-            marks.TryAdd("Jolly", 25);
-            marks.TryAdd("Purva", 2);
-            marks.TryAdd("Nandani", 10);
-            marks.TryAdd("Pranali", 12);
-            foreach (var item in marks)
-            {
-                Console.WriteLine($"Marks Of {item.Key} Are {item.Value}");
-            }
-            if (marks.TryRemove("Pranali", out int result3)){
-                Console.WriteLine($"\nRemoved Element Is {result3}\n");
-            }
-            foreach (var item in marks)
-            {
-                Console.WriteLine($"Marks Of {item.Key} Are {item.Value}");
-            }
-            Console.WriteLine("\nKeys Are: ");
-            foreach(var item in marks.Keys)
-            {
-                Console.WriteLine($"{item}");
-            }
-            Console.WriteLine("\nValues Are: ");
-            foreach(var item in marks.Values)
-            {
-                Console.WriteLine(item.ToString());
-            }
-
+            //marks.TryAdd("Jolly", 25);
+            //marks.TryAdd("Purva", 2);
+            //marks.TryAdd("Nandani", 10);
+            //marks.TryAdd("Pranali", 12);
+            //foreach (var item in marks)
+            //{
+            //    Console.WriteLine($"Marks Of {item.Key} Are {item.Value}");
+            //}
+            //if (marks.TryRemove("Pranali", out int result3)){
+            //    Console.WriteLine($"\nRemoved Element Is {result3}\n");
+            //}
+            //foreach (var item in marks)
+            //{
+            //    Console.WriteLine($"Marks Of {item.Key} Are {item.Value}");
+            //}
+            //Console.WriteLine("\nKeys Are: ");
+            //foreach(var item in marks.Keys)
+            //{
+            //    Console.WriteLine($"{item}");
+            //}
+            //Console.WriteLine("\nValues Are: ");
+            //foreach(var item in marks.Values)
+            //{
+            //    Console.WriteLine(item.ToString());
+            //}
 
             //Concurrent Stack
             //concurrentStack.Push(21);

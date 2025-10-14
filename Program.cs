@@ -5,8 +5,18 @@ class Program
 {
     public static void Main(string[] args)
     {
-        CollectionsDemo collectionsDemo = new CollectionsDemo();
-        collectionsDemo.Start();
+        GenericDemo<int> gd1 = new GenericDemo<int>();
+        gd1.SetData(1000);
+        Console.WriteLine($"Data Is: {gd1.GetData()}");
+        gd1.DisplayType();
+
+        GenericDemo<string> gd2 = new GenericDemo<string>();
+        gd2.SetData("Jolly Pareshbhai Patel");
+        Console.WriteLine($"\nData Is: {gd2.GetData()}");
+        gd2.DisplayType();
+
+        //CollectionsDemo collectionsDemo = new CollectionsDemo();
+        //collectionsDemo.Start();
 
         //Subscriber subscriber = new Subscriber();
         //subscriber.Start();
@@ -70,7 +80,7 @@ class Program
 
         ////Remove White Space From A String
         //RemoveSpace("My Name Is Jolly Patel");
-  
+
     }
     //public static void RemoveSpace(String s)
     //{
