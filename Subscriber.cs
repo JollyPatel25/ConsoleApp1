@@ -12,17 +12,17 @@ namespace ConsoleApp1
         {
             Button button = new Button();
             button.OnClick += buttonClicked;
-            Console.WriteLine("Press \"Enter\" To See Clicked Event: ");
+            Console.WriteLine("\nPress Any Key To See Clicked Event: ");
             ConsoleKeyInfo key = Console.ReadKey();
             Console.WriteLine("");
             button.buttonClicked(key);
 
 
-            //AlarmClock alarmClock = new AlarmClock();
-            //alarmClock.OnAlarmRing += AlarmRang;
-            //Console.WriteLine("Enter The Seconds To Set Alarm: ");
-            //int seconds = Convert.ToInt32(Console.ReadLine());
-            //alarmClock.SetAlarm(seconds);
+            AlarmClock alarmClock = new AlarmClock();
+            alarmClock.OnAlarmRing += AlarmRang;
+            Console.WriteLine("\nEnter The Seconds To Set Alarm: ");
+            int seconds = Convert.ToInt32(Console.ReadLine());
+            alarmClock.SetAlarm(seconds);
         }
         public void AlarmRang(string msg)
         {
