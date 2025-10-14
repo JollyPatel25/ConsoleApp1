@@ -17,23 +17,52 @@ namespace ConsoleApp1
         SortedList<int, string> sl = new SortedList<int, string>();
         Queue<int> queue = new Queue<int>();
         ConcurrentStack<int> concurrentStack = new ConcurrentStack<int>();
+        ConcurrentDictionary<String, int> marks = new ConcurrentDictionary<string, int>();
 
         public void Start()
         {
-            concurrentStack.Push(21);
-            concurrentStack.Push(24);
-            if(concurrentStack.TryPop(out int result1)){
-                Console.WriteLine($"Element Popped Is {result1}!");
-            }
-            if(concurrentStack.TryPeek(out int result2))
+            marks.TryAdd("Jolly", 25);
+            marks.TryAdd("Purva", 2);
+            marks.TryAdd("Nandani", 10);
+            marks.TryAdd("Pranali", 12);
+            foreach (var item in marks)
             {
-                Console.WriteLine($"Element Peeked Is {result2}");
+                Console.WriteLine($"Marks Of {item.Key} Are {item.Value}");
             }
-            Console.WriteLine("Stack Elements: ");
-            foreach(var item in concurrentStack)
+            if (marks.TryRemove("Pranali", out int result3)){
+                Console.WriteLine($"\nRemoved Element Is {result3}\n");
+            }
+            foreach (var item in marks)
             {
-                Console.WriteLine(item);
+                Console.WriteLine($"Marks Of {item.Key} Are {item.Value}");
             }
+            Console.WriteLine("\nKeys Are: ");
+            foreach(var item in marks.Keys)
+            {
+                Console.WriteLine($"{item}");
+            }
+            Console.WriteLine("\nValues Are: ");
+            foreach(var item in marks.Values)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+
+            //Concurrent Stack
+            //concurrentStack.Push(21);
+            //concurrentStack.Push(24);
+            //if(concurrentStack.TryPop(out int result1)){
+            //    Console.WriteLine($"Element Popped Is {result1}!");
+            //}
+            //if(concurrentStack.TryPeek(out int result2))
+            //{
+            //    Console.WriteLine($"Element Peeked Is {result2}");
+            //}
+            //Console.WriteLine("Stack Elements: ");
+            //foreach(var item in concurrentStack)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
             //Queue
             //queue.Enqueue(25);
