@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections.Concurrent;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1
@@ -15,26 +16,42 @@ namespace ConsoleApp1
         LinkedList<string> linkedList = new LinkedList<string>();
         SortedList<int, string> sl = new SortedList<int, string>();
         Queue<int> queue = new Queue<int>();
+        ConcurrentStack<int> concurrentStack = new ConcurrentStack<int>();
 
         public void Start()
         {
+            concurrentStack.Push(21);
+            concurrentStack.Push(24);
+            if(concurrentStack.TryPop(out int result1)){
+                Console.WriteLine($"Element Popped Is {result1}!");
+            }
+            if(concurrentStack.TryPeek(out int result2))
+            {
+                Console.WriteLine($"Element Peeked Is {result2}");
+            }
+            Console.WriteLine("Stack Elements: ");
+            foreach(var item in concurrentStack)
+            {
+                Console.WriteLine(item);
+            }
+
             //Queue
-            queue.Enqueue(25);
-            queue.Enqueue(21);
-            queue.Enqueue(20);
-            queue.Enqueue(24);
-            Console.WriteLine("Before: ");
-            foreach (int item in queue)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine("After: ");
-            queue.Dequeue();
-            queue.Dequeue();
-            foreach (var item in queue)
-            {
-                Console.WriteLine(item);
-            }
+            //queue.Enqueue(25);
+            //queue.Enqueue(21);
+            //queue.Enqueue(20);
+            //queue.Enqueue(24);
+            //Console.WriteLine("Before: ");
+            //foreach (int item in queue)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //Console.WriteLine("After: ");
+            //queue.Dequeue();
+            //queue.Dequeue();
+            //foreach (var item in queue)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
             //SortedList
             //sl.Add(4, "Jolly");
