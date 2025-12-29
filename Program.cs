@@ -1,10 +1,51 @@
 ﻿using ConsoleApp1;
-using System;
+using Npgsql;
+using System.Data;
 using System.Text;
 class Program
 {
     public static void Main(string[] args)
     {
+        //Connected Database architecture
+        Console.WriteLine("Demonstrating postgres database connection");
+
+        NpgsqlConnection con = new NpgsqlConnection("Host = localhost; Port = 5432; Database = Demo; Username = postgres; Password = Jolly");
+        con.Open();
+        string query = "SELECT * FROM STUDENTS";
+        NpgsqlCommand command = new NpgsqlCommand(query, con);
+        NpgsqlDataReader dataReader = command.ExecuteReader();
+        while (dataReader.Read())
+        {
+            //Console.WriteLine(dataReader["id"] + " " + dataReader["enrollment"] + " " + dataReader["name"]); 
+            //                                            OR
+            Console.WriteLine(dataReader.GetInt32(0) + " " + dataReader.GetString(1) + " " + dataReader.GetString(2));
+        }
+        con.Close();
+
+        //Disconnected database architecture
+        string query2 = "SELECT * FROM STUDENTS";
+        DataSet dataSet = new DataSet();
+        using (NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(query2, con))
+        {
+            dataAdapter.Fill(dataSet, "students");
+            DataTable dataTable = dataSet.Tables[0];
+            foreach(DataRow dataRow in dataTable.Rows)
+            {
+                Console.WriteLine($"Id: {dataRow["id"]} Enrollment: {dataRow["enrollment"]} Name: {dataRow["name"]}");
+            }
+            //Update data
+            DataRow dataRow1 = dataTable.NewRow();
+            dataRow1["enrollment"] = "206173107036";
+            dataRow1["name"] = "Dhwani";
+            dataRow1["id"] = 7;
+            dataTable.Rows.Add(dataRow1);
+
+            NpgsqlCommandBuilder cmdBuilder = new NpgsqlCommandBuilder(dataAdapter);
+            dataAdapter.Update(dataSet, "students");
+
+        }
+
+
         GenericDemo<int> gd1 = new GenericDemo<int>();
         gd1.SetData(1000);
         Console.WriteLine($"Data Is: {gd1.GetData()}");

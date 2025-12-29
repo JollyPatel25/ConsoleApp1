@@ -82,14 +82,14 @@ namespace ConsoleApp1
             //}
 
             //SortedList
-            //sl.Add(4, "Jolly");
-            //sl.Add(1, "Purvika");
-            //sl.Add(2, "Nandani");
-            //sl.Add(3, "Pranali");
-            //foreach(var s in sl)
-            //{
-            //    Console.WriteLine($"Key: {s.Key} Value: {s.Value}");
-            //}
+            sl.Add(4, "Jolly");
+            sl.Add(1, "Purvika");
+            sl.Add(2, "Nandani");
+            sl.Add(3, "Pranali");
+            foreach (var s in sl)
+            {
+                Console.WriteLine($"Key: {s.Key} Value: {s.Value}");
+            }
 
             //LinkedList
             //linkedList.Clear();
